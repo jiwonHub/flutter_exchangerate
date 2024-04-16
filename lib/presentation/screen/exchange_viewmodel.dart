@@ -26,7 +26,12 @@ class ExchangeViewmodel with ChangeNotifier {
     notifyListeners();
   }
 
-  void calcExchange(int number1, int number2, String country1, String country2) async {
+  void calcExchange(num number, String country1, String country2, bool isFirst) async {
 
+
+    if (isFirst) {
+      final rates = await _exchangeRepository.getRates(country1);
+
+    }
   }
 }

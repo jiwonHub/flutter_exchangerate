@@ -11,6 +11,8 @@ _$ExchangeStateImpl _$$ExchangeStateImplFromJson(Map<String, dynamic> json) =>
       timeLastUpdateUtc: json['timeLastUpdateUtc'] as String? ?? '',
       timeNextUpdateUtc: json['timeNextUpdateUtc'] as String? ?? '',
       baseCode: json['baseCode'] as String? ?? '',
+      first: (json['first'] as num?)?.toDouble() ?? 0.0,
+      second: (json['second'] as num?)?.toDouble() ?? 0.0,
       exchangeRateModel: json['exchangeRateModel'] == null
           ? const ExchangeRateModel(
               krw: 0,
@@ -184,5 +186,7 @@ Map<String, dynamic> _$$ExchangeStateImplToJson(_$ExchangeStateImpl instance) =>
       'timeLastUpdateUtc': instance.timeLastUpdateUtc,
       'timeNextUpdateUtc': instance.timeNextUpdateUtc,
       'baseCode': instance.baseCode,
+      'first': instance.first,
+      'second': instance.second,
       'exchangeRateModel': instance.exchangeRateModel,
     };

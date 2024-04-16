@@ -14,6 +14,8 @@ class ExchangeState with _$ExchangeState {
     @Default('') String timeLastUpdateUtc,
     @Default('') String timeNextUpdateUtc,
     @Default('') String baseCode,
+    @Default(0.0) double first,
+    @Default(0.0) double second,
     @Default(ExchangeRateModel(
       krw: 0,
       aed: 0,
