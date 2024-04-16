@@ -23,8 +23,10 @@ class ExchangeViewmodel with ChangeNotifier {
   void getRates(String country) async {
     final rates = await _exchangeRepository.getRates(country);
     _state = _state.copyWith(exchangeRateModel: rates);
-    print(_state);
+    notifyListeners();
   }
 
-  void calcExchange(String country1, String country2) async {}
+  void calcExchange(int number1, int number2, String country1, String country2) async {
+
+  }
 }

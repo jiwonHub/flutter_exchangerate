@@ -1,6 +1,9 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_exchangerate/presentation/components/exchange_enum.dart';
 import 'package:flutter_exchangerate/presentation/screen/exchange_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -12,21 +15,25 @@ class ExchangeScreen extends StatefulWidget {
 }
 
 class _ExchangeScreenState extends State<ExchangeScreen> {
+  final textController = TextEditingController();
+  Currency? selectedCountry1;
+  Currency? selectedCountry2;
+  String? selectedString1;
+  String? selectedString2;
+  num? inputNum1;
+  num? inputNum2;
 
   @override
   void initState() {
     super.initState();
-
+    context.read<ExchangeViewmodel>().getRates('KRW');
   }
 
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<ExchangeViewmodel>();
     final exchanges = viewModel.state;
-    final textController = TextEditingController();
 
-    viewModel.getRates('KRW');
-    print(exchanges);
 
     return Scaffold(
       appBar: AppBar(
@@ -43,33 +50,37 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                   padding: EdgeInsets.all(8.0),
                   width: 200,
                   height: 100,
-                  child:TextField(
+                  child: TextField(
                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-                      border:OutlineInputBorder(),
-                      hintText:'숫자 입력'
-                    ),
+                        contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                        border: OutlineInputBorder(),
+                        hintText: '숫자 입력'),
+                    onChanged: (text) {
+                      inputNum1 = num.tryParse(text);
+                      if (inputNum2 != null) {
+                        setState(() {
+
+                        });
+                      }
+                    },
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: PopupMenuButton<String>(
+                child: PopupMenuButton<Currency>(
                   iconSize: 20.0,
-                  itemBuilder: (BuildContext context) =>
-                  <PopupMenuEntry<String>>[
-                    PopupMenuItem<String>(
-                      value: 'KOR',
-                      child: Text('KOR'),
-                    ),
-                    PopupMenuItem<String>(
-                      value: 'KOR',
-                      child: Text('KOR'),
-                    ),
-                    PopupMenuItem<String>(
-                      value: 'KOR',
-                      child: Text('KOR'),
-                    ),
+                  onSelected: (Currency result) {
+                    setState(() {
+                      selectedCountry1 = result;
+                    });
+                  },
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<Currency>>[
+                    for (Currency currency in Currency.values)
+                      PopupMenuItem<Currency>(
+                        value: currency,
+                        child: Text(getStringFromCurrency(currency)),
+                      ),
                   ],
                   child: Container(
                     decoration: BoxDecoration(
@@ -79,7 +90,7 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                     width: 100,
                     height: 50,
                     child: Center(
-                      child: Text('option'),
+                      child: Text('${selectedCountry1}'),
                     ),
                   ),
                 ),
@@ -95,33 +106,29 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                   padding: EdgeInsets.all(8.0),
                   width: 200,
                   height: 100,
-                  child:TextField(
+                  child: TextField(
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-                        border:OutlineInputBorder(),
-                        hintText:'숫자 입력'
-                    ),
+                        border: OutlineInputBorder(),
+                        hintText: '숫자 입력'),
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: PopupMenuButton<String>(
+                child: PopupMenuButton<Currency>(
                   iconSize: 20.0,
-                  itemBuilder: (BuildContext context) =>
-                  <PopupMenuEntry<String>>[
-                    PopupMenuItem<String>(
-                      value: 'KOR',
-                      child: Text('KOR'),
-                    ),
-                    PopupMenuItem<String>(
-                      value: 'KOR',
-                      child: Text('KOR'),
-                    ),
-                    PopupMenuItem<String>(
-                      value: 'KOR',
-                      child: Text('KOR'),
-                    ),
+                  onSelected: (Currency result) {
+                    setState(() {
+                      selectedCountry2 = result;
+                    });
+                  },
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<Currency>>[
+                    for (Currency currency in Currency.values)
+                      PopupMenuItem<Currency>(
+                        value: currency,
+                        child: Text(getStringFromCurrency(currency)),
+                      ),
                   ],
                   child: Container(
                     decoration: BoxDecoration(
@@ -131,7 +138,7 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                     width: 100,
                     height: 50,
                     child: Center(
-                      child: Text('option'),
+                      child: Text('${selectedCountry2}'),
                     ),
                   ),
                 ),
