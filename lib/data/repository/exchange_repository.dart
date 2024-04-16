@@ -4,5 +4,5 @@ import '../model/exchange_rate_model.dart';
 
 abstract interface class ExchangeRepository {
   Future<ExchangeModel> getExchanges(String country);
-  Future<ExchangeRateModel> getRates();
+  Future<ExchangeRateModel> getRates(String country);
 }

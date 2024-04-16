@@ -20,8 +20,8 @@ ExchangeModel _$ExchangeModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ExchangeModel {
-  DateTime get timeLastUpdateUtc => throw _privateConstructorUsedError;
-  DateTime get timeNextUpdateUtc => throw _privateConstructorUsedError;
+  String get timeLastUpdateUtc => throw _privateConstructorUsedError;
+  String get timeNextUpdateUtc => throw _privateConstructorUsedError;
   String get baseCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,9 +37,7 @@ abstract class $ExchangeModelCopyWith<$Res> {
       _$ExchangeModelCopyWithImpl<$Res, ExchangeModel>;
   @useResult
   $Res call(
-      {DateTime timeLastUpdateUtc,
-      DateTime timeNextUpdateUtc,
-      String baseCode});
+      {String timeLastUpdateUtc, String timeNextUpdateUtc, String baseCode});
 }
 
 /// @nodoc
@@ -63,11 +61,11 @@ class _$ExchangeModelCopyWithImpl<$Res, $Val extends ExchangeModel>
       timeLastUpdateUtc: null == timeLastUpdateUtc
           ? _value.timeLastUpdateUtc
           : timeLastUpdateUtc // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       timeNextUpdateUtc: null == timeNextUpdateUtc
           ? _value.timeNextUpdateUtc
           : timeNextUpdateUtc // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       baseCode: null == baseCode
           ? _value.baseCode
           : baseCode // ignore: cast_nullable_to_non_nullable
@@ -85,9 +83,7 @@ abstract class _$$ExchangeModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {DateTime timeLastUpdateUtc,
-      DateTime timeNextUpdateUtc,
-      String baseCode});
+      {String timeLastUpdateUtc, String timeNextUpdateUtc, String baseCode});
 }
 
 /// @nodoc
@@ -109,11 +105,11 @@ class __$$ExchangeModelImplCopyWithImpl<$Res>
       timeLastUpdateUtc: null == timeLastUpdateUtc
           ? _value.timeLastUpdateUtc
           : timeLastUpdateUtc // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       timeNextUpdateUtc: null == timeNextUpdateUtc
           ? _value.timeNextUpdateUtc
           : timeNextUpdateUtc // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       baseCode: null == baseCode
           ? _value.baseCode
           : baseCode // ignore: cast_nullable_to_non_nullable
@@ -134,9 +130,9 @@ class _$ExchangeModelImpl implements _ExchangeModel {
       _$$ExchangeModelImplFromJson(json);
 
   @override
-  final DateTime timeLastUpdateUtc;
+  final String timeLastUpdateUtc;
   @override
-  final DateTime timeNextUpdateUtc;
+  final String timeNextUpdateUtc;
   @override
   final String baseCode;
 
@@ -179,17 +175,17 @@ class _$ExchangeModelImpl implements _ExchangeModel {
 
 abstract class _ExchangeModel implements ExchangeModel {
   const factory _ExchangeModel(
-      {required final DateTime timeLastUpdateUtc,
-      required final DateTime timeNextUpdateUtc,
+      {required final String timeLastUpdateUtc,
+      required final String timeNextUpdateUtc,
       required final String baseCode}) = _$ExchangeModelImpl;
 
   factory _ExchangeModel.fromJson(Map<String, dynamic> json) =
       _$ExchangeModelImpl.fromJson;
 
   @override
-  DateTime get timeLastUpdateUtc;
+  String get timeLastUpdateUtc;
   @override
-  DateTime get timeNextUpdateUtc;
+  String get timeNextUpdateUtc;
   @override
   String get baseCode;
   @override

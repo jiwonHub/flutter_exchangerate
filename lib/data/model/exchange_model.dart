@@ -9,8 +9,8 @@ part 'exchange_model.g.dart';
 @freezed
 class ExchangeModel with _$ExchangeModel {
   const factory ExchangeModel({
-    required DateTime timeLastUpdateUtc,
-    required DateTime timeNextUpdateUtc,
+    required String timeLastUpdateUtc,
+    required String timeNextUpdateUtc,
     required String baseCode,
   }) = _ExchangeModel;
 

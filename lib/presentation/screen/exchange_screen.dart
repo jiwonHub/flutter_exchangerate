@@ -1,12 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_exchangerate/presentation/screen/exchange_viewmodel.dart';
+import 'package:provider/provider.dart';
 
-class ExchangeScreen extends StatelessWidget {
+class ExchangeScreen extends StatefulWidget {
   const ExchangeScreen({super.key});
 
   @override
+  State<ExchangeScreen> createState() => _ExchangeScreenState();
+}
+
+class _ExchangeScreenState extends State<ExchangeScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<ExchangeViewmodel>();
+    final exchanges = viewModel.state;
+    final textController = TextEditingController();
+
+    viewModel.getRates('KRW');
+    print(exchanges);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('환율 계산기'),

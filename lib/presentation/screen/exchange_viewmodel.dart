@@ -7,19 +7,24 @@ class ExchangeViewmodel with ChangeNotifier {
 
   ExchangeViewmodel({required ExchangeRepository exchangeRepository}) : _exchangeRepository = exchangeRepository;
 
-  ExchangeState _state = ExchangeState();
+  ExchangeState _state = const ExchangeState();
 
   ExchangeState get state => _state;
 
-  // void getExchange(String country) async {
-  //   final exchanges = await _exchangeRepository.getExchanges(country);
-  //   _state = _state.copyWith(exchanges: exchanges.conversionRates);
-  //   notifyListeners();
-  // }
-
-
-
-  void calcExchange(String country1, String country2) {
-    // _state = _state.copyWith(exchange: double.parse());
+  void getExchange(String country) async {
+    final exchanges = await _exchangeRepository.getExchanges(country);
+    _state = _state.copyWith(
+        timeLastUpdateUtc: exchanges.timeLastUpdateUtc,
+        timeNextUpdateUtc: exchanges.timeNextUpdateUtc,
+        baseCode: exchanges.baseCode);
+    notifyListeners();
   }
+
+  void getRates(String country) async {
+    final rates = await _exchangeRepository.getRates(country);
+    _state = _state.copyWith(exchangeRateModel: rates);
+    print(_state);
+  }
+
+  void calcExchange(String country1, String country2) async {}
 }

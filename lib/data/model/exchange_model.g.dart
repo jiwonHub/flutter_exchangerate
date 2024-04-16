@@ -8,14 +8,14 @@ part of 'exchange_model.dart';
 
 _$ExchangeModelImpl _$$ExchangeModelImplFromJson(Map<String, dynamic> json) =>
     _$ExchangeModelImpl(
-      timeLastUpdateUtc: DateTime.parse(json['timeLastUpdateUtc'] as String),
-      timeNextUpdateUtc: DateTime.parse(json['timeNextUpdateUtc'] as String),
+      timeLastUpdateUtc: json['timeLastUpdateUtc'] as String,
+      timeNextUpdateUtc: json['timeNextUpdateUtc'] as String,
       baseCode: json['baseCode'] as String,
     );
 
 Map<String, dynamic> _$$ExchangeModelImplToJson(_$ExchangeModelImpl instance) =>
     <String, dynamic>{
-      'timeLastUpdateUtc': instance.timeLastUpdateUtc.toIso8601String(),
-      'timeNextUpdateUtc': instance.timeNextUpdateUtc.toIso8601String(),
+      'timeLastUpdateUtc': instance.timeLastUpdateUtc,
+      'timeNextUpdateUtc': instance.timeNextUpdateUtc,
       'baseCode': instance.baseCode,
     };

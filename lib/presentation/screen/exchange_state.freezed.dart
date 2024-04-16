@@ -20,7 +20,11 @@ ExchangeState _$ExchangeStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ExchangeState {
-  double get exchange => throw _privateConstructorUsedError;
+  String get timeLastUpdateUtc => throw _privateConstructorUsedError;
+  String get timeNextUpdateUtc => throw _privateConstructorUsedError;
+  String get baseCode => throw _privateConstructorUsedError;
+  ExchangeRateModel? get exchangeRateModel =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +38,13 @@ abstract class $ExchangeStateCopyWith<$Res> {
           ExchangeState value, $Res Function(ExchangeState) then) =
       _$ExchangeStateCopyWithImpl<$Res, ExchangeState>;
   @useResult
-  $Res call({double exchange});
+  $Res call(
+      {String timeLastUpdateUtc,
+      String timeNextUpdateUtc,
+      String baseCode,
+      ExchangeRateModel? exchangeRateModel});
+
+  $ExchangeRateModelCopyWith<$Res>? get exchangeRateModel;
 }
 
 /// @nodoc
@@ -50,14 +60,41 @@ class _$ExchangeStateCopyWithImpl<$Res, $Val extends ExchangeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? exchange = null,
+    Object? timeLastUpdateUtc = null,
+    Object? timeNextUpdateUtc = null,
+    Object? baseCode = null,
+    Object? exchangeRateModel = freezed,
   }) {
     return _then(_value.copyWith(
-      exchange: null == exchange
-          ? _value.exchange
-          : exchange // ignore: cast_nullable_to_non_nullable
-              as double,
+      timeLastUpdateUtc: null == timeLastUpdateUtc
+          ? _value.timeLastUpdateUtc
+          : timeLastUpdateUtc // ignore: cast_nullable_to_non_nullable
+              as String,
+      timeNextUpdateUtc: null == timeNextUpdateUtc
+          ? _value.timeNextUpdateUtc
+          : timeNextUpdateUtc // ignore: cast_nullable_to_non_nullable
+              as String,
+      baseCode: null == baseCode
+          ? _value.baseCode
+          : baseCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      exchangeRateModel: freezed == exchangeRateModel
+          ? _value.exchangeRateModel
+          : exchangeRateModel // ignore: cast_nullable_to_non_nullable
+              as ExchangeRateModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ExchangeRateModelCopyWith<$Res>? get exchangeRateModel {
+    if (_value.exchangeRateModel == null) {
+      return null;
+    }
+
+    return $ExchangeRateModelCopyWith<$Res>(_value.exchangeRateModel!, (value) {
+      return _then(_value.copyWith(exchangeRateModel: value) as $Val);
+    });
   }
 }
 
@@ -69,7 +106,14 @@ abstract class _$$ExchangeStateImplCopyWith<$Res>
       __$$ExchangeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double exchange});
+  $Res call(
+      {String timeLastUpdateUtc,
+      String timeNextUpdateUtc,
+      String baseCode,
+      ExchangeRateModel? exchangeRateModel});
+
+  @override
+  $ExchangeRateModelCopyWith<$Res>? get exchangeRateModel;
 }
 
 /// @nodoc
@@ -83,13 +127,28 @@ class __$$ExchangeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? exchange = null,
+    Object? timeLastUpdateUtc = null,
+    Object? timeNextUpdateUtc = null,
+    Object? baseCode = null,
+    Object? exchangeRateModel = freezed,
   }) {
     return _then(_$ExchangeStateImpl(
-      exchange: null == exchange
-          ? _value.exchange
-          : exchange // ignore: cast_nullable_to_non_nullable
-              as double,
+      timeLastUpdateUtc: null == timeLastUpdateUtc
+          ? _value.timeLastUpdateUtc
+          : timeLastUpdateUtc // ignore: cast_nullable_to_non_nullable
+              as String,
+      timeNextUpdateUtc: null == timeNextUpdateUtc
+          ? _value.timeNextUpdateUtc
+          : timeNextUpdateUtc // ignore: cast_nullable_to_non_nullable
+              as String,
+      baseCode: null == baseCode
+          ? _value.baseCode
+          : baseCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      exchangeRateModel: freezed == exchangeRateModel
+          ? _value.exchangeRateModel
+          : exchangeRateModel // ignore: cast_nullable_to_non_nullable
+              as ExchangeRateModel?,
     ));
   }
 }
@@ -97,18 +156,30 @@ class __$$ExchangeStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ExchangeStateImpl implements _ExchangeState {
-  const _$ExchangeStateImpl({this.exchange = 0.0});
+  const _$ExchangeStateImpl(
+      {this.timeLastUpdateUtc = '',
+      this.timeNextUpdateUtc = '',
+      this.baseCode = '',
+      this.exchangeRateModel});
 
   factory _$ExchangeStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExchangeStateImplFromJson(json);
 
   @override
   @JsonKey()
-  final double exchange;
+  final String timeLastUpdateUtc;
+  @override
+  @JsonKey()
+  final String timeNextUpdateUtc;
+  @override
+  @JsonKey()
+  final String baseCode;
+  @override
+  final ExchangeRateModel? exchangeRateModel;
 
   @override
   String toString() {
-    return 'ExchangeState(exchange: $exchange)';
+    return 'ExchangeState(timeLastUpdateUtc: $timeLastUpdateUtc, timeNextUpdateUtc: $timeNextUpdateUtc, baseCode: $baseCode, exchangeRateModel: $exchangeRateModel)';
   }
 
   @override
@@ -116,13 +187,20 @@ class _$ExchangeStateImpl implements _ExchangeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ExchangeStateImpl &&
-            (identical(other.exchange, exchange) ||
-                other.exchange == exchange));
+            (identical(other.timeLastUpdateUtc, timeLastUpdateUtc) ||
+                other.timeLastUpdateUtc == timeLastUpdateUtc) &&
+            (identical(other.timeNextUpdateUtc, timeNextUpdateUtc) ||
+                other.timeNextUpdateUtc == timeNextUpdateUtc) &&
+            (identical(other.baseCode, baseCode) ||
+                other.baseCode == baseCode) &&
+            (identical(other.exchangeRateModel, exchangeRateModel) ||
+                other.exchangeRateModel == exchangeRateModel));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, exchange);
+  int get hashCode => Object.hash(runtimeType, timeLastUpdateUtc,
+      timeNextUpdateUtc, baseCode, exchangeRateModel);
 
   @JsonKey(ignore: true)
   @override
@@ -139,13 +217,23 @@ class _$ExchangeStateImpl implements _ExchangeState {
 }
 
 abstract class _ExchangeState implements ExchangeState {
-  const factory _ExchangeState({final double exchange}) = _$ExchangeStateImpl;
+  const factory _ExchangeState(
+      {final String timeLastUpdateUtc,
+      final String timeNextUpdateUtc,
+      final String baseCode,
+      final ExchangeRateModel? exchangeRateModel}) = _$ExchangeStateImpl;
 
   factory _ExchangeState.fromJson(Map<String, dynamic> json) =
       _$ExchangeStateImpl.fromJson;
 
   @override
-  double get exchange;
+  String get timeLastUpdateUtc;
+  @override
+  String get timeNextUpdateUtc;
+  @override
+  String get baseCode;
+  @override
+  ExchangeRateModel? get exchangeRateModel;
   @override
   @JsonKey(ignore: true)
   _$$ExchangeStateImplCopyWith<_$ExchangeStateImpl> get copyWith =>

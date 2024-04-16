@@ -19,7 +19,9 @@ class ExchangeRepositoryImpl implements ExchangeRepository {
   }
 
   @override
-  Future<ExchangeRateModel> getRates() async {
-
+  Future<ExchangeRateModel> getRates(String country) async {
+    final exchange = await _dataSource.getExchanges(country);
+    final rateModel = exchange.conversionRates!.toRate();
+    return rateModel;
   }
 }

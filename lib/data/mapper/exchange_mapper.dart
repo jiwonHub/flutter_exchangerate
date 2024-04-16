@@ -6,8 +6,8 @@ import '../dto/exchange_dto.dart';
 extension ToExchange on ExchangeDto {
   ExchangeModel toExchange() {
     return ExchangeModel(
-      timeLastUpdateUtc: DateTime.parse(timeLastUpdateUtc!),
-      timeNextUpdateUtc: DateTime.parse(timeNextUpdateUtc!),
+      timeLastUpdateUtc: timeLastUpdateUtc!,
+      timeNextUpdateUtc: timeNextUpdateUtc!,
       baseCode: baseCode!,
     );
   }
