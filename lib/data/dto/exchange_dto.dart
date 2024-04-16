@@ -3,6 +3,16 @@ import 'dart:core';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 class ExchangeDto {
+  String? result;
+  String? documentation;
+  String? termsOfUse;
+  num? timeLastUpdateUnix;
+  String? timeLastUpdateUtc;
+  num? timeNextUpdateUnix;
+  String? timeNextUpdateUtc;
+  String? baseCode;
+  List<ConversionRates>? conversionRates;
+
   ExchangeDto({
       this.result,
       this.documentation,
@@ -23,17 +33,14 @@ class ExchangeDto {
     timeNextUpdateUnix = json['time_next_update_unix'];
     timeNextUpdateUtc = json['time_next_update_utc'];
     baseCode = json['base_code'];
-    conversionRates = json['conversion_rates'] != null ? ConversionRates.fromJson(json['conversion_rates']) : null;
+    if (json['conversion_rates'] != null) {
+      conversionRates = [];
+      json['conversion_rates'].forEach((v) {
+        conversionRates?.add(ConversionRates.fromJson(v));
+      });
+    }
+    // conversionRates = json['conversion_rates'] != null ? ConversionRates.fromJson(json['conversion_rates']) : null;
   }
-  String? result;
-  String? documentation;
-  String? termsOfUse;
-  num? timeLastUpdateUnix;
-  String? timeLastUpdateUtc;
-  num? timeNextUpdateUnix;
-  String? timeNextUpdateUtc;
-  String? baseCode;
-  ConversionRates? conversionRates;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -46,7 +53,7 @@ class ExchangeDto {
     map['time_next_update_utc'] = timeNextUpdateUtc;
     map['base_code'] = baseCode;
     if (conversionRates != null) {
-      map['conversion_rates'] = conversionRates?.toJson();
+      map['conversion_rates'] = conversionRates?.map((v) => v.toJson()).toList();
     }
     return map;
   }
