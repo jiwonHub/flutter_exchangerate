@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -34,7 +32,6 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
     final viewModel = context.watch<ExchangeViewmodel>();
     final exchanges = viewModel.state;
 
-
     return Scaffold(
       appBar: AppBar(
         title: Text('환율 계산기'),
@@ -52,16 +49,13 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                   height: 100,
                   child: TextField(
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 15.0),
                         border: OutlineInputBorder(),
                         hintText: '숫자 입력'),
                     onChanged: (text) {
                       inputNum1 = num.tryParse(text);
-                      if (inputNum2 != null) {
-                        setState(() {
-
-                        });
-                      }
+                      // if ()
                     },
                   ),
                 ),
@@ -75,7 +69,8 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                       selectedCountry1 = result;
                     });
                   },
-                  itemBuilder: (BuildContext context) => <PopupMenuEntry<Currency>>[
+                  itemBuilder: (BuildContext context) =>
+                      <PopupMenuEntry<Currency>>[
                     for (Currency currency in Currency.values)
                       PopupMenuItem<Currency>(
                         value: currency,
@@ -90,7 +85,11 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                     width: 100,
                     height: 50,
                     child: Center(
-                      child: Text('${selectedCountry1}'),
+                      child: Text(
+                        selectedCountry1 != null
+                            ? getStringFromCurrency(selectedCountry1!)
+                            : '선택',
+                      ),
                     ),
                   ),
                 ),
@@ -108,7 +107,8 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                   height: 100,
                   child: TextField(
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 15.0),
                         border: OutlineInputBorder(),
                         hintText: '숫자 입력'),
                   ),
@@ -123,7 +123,8 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                       selectedCountry2 = result;
                     });
                   },
-                  itemBuilder: (BuildContext context) => <PopupMenuEntry<Currency>>[
+                  itemBuilder: (BuildContext context) =>
+                      <PopupMenuEntry<Currency>>[
                     for (Currency currency in Currency.values)
                       PopupMenuItem<Currency>(
                         value: currency,
@@ -138,7 +139,11 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                     width: 100,
                     height: 50,
                     child: Center(
-                      child: Text('${selectedCountry2}'),
+                      child: Text(
+                        selectedCountry2 != null
+                            ? getStringFromCurrency(selectedCountry2!)
+                            : '선택',
+                      ),
                     ),
                   ),
                 ),
