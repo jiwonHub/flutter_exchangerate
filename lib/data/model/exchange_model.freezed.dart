@@ -23,8 +23,7 @@ mixin _$ExchangeModel {
   DateTime get timeLastUpdateUtc => throw _privateConstructorUsedError;
   DateTime get timeNextUpdateUtc => throw _privateConstructorUsedError;
   String get baseCode => throw _privateConstructorUsedError;
-  List<Map<String, num>> get conversionRates =>
-      throw _privateConstructorUsedError;
+  ConversionRates get conversionRates => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +41,7 @@ abstract class $ExchangeModelCopyWith<$Res> {
       {DateTime timeLastUpdateUtc,
       DateTime timeNextUpdateUtc,
       String baseCode,
-      List<Map<String, num>> conversionRates});
+      ConversionRates conversionRates});
 }
 
 /// @nodoc
@@ -79,7 +78,7 @@ class _$ExchangeModelCopyWithImpl<$Res, $Val extends ExchangeModel>
       conversionRates: null == conversionRates
           ? _value.conversionRates
           : conversionRates // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, num>>,
+              as ConversionRates,
     ) as $Val);
   }
 }
@@ -96,7 +95,7 @@ abstract class _$$ExchangeModelImplCopyWith<$Res>
       {DateTime timeLastUpdateUtc,
       DateTime timeNextUpdateUtc,
       String baseCode,
-      List<Map<String, num>> conversionRates});
+      ConversionRates conversionRates});
 }
 
 /// @nodoc
@@ -129,9 +128,9 @@ class __$$ExchangeModelImplCopyWithImpl<$Res>
           : baseCode // ignore: cast_nullable_to_non_nullable
               as String,
       conversionRates: null == conversionRates
-          ? _value._conversionRates
+          ? _value.conversionRates
           : conversionRates // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, num>>,
+              as ConversionRates,
     ));
   }
 }
@@ -143,8 +142,7 @@ class _$ExchangeModelImpl implements _ExchangeModel {
       {required this.timeLastUpdateUtc,
       required this.timeNextUpdateUtc,
       required this.baseCode,
-      required final List<Map<String, num>> conversionRates})
-      : _conversionRates = conversionRates;
+      required this.conversionRates});
 
   factory _$ExchangeModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExchangeModelImplFromJson(json);
@@ -155,13 +153,8 @@ class _$ExchangeModelImpl implements _ExchangeModel {
   final DateTime timeNextUpdateUtc;
   @override
   final String baseCode;
-  final List<Map<String, num>> _conversionRates;
   @override
-  List<Map<String, num>> get conversionRates {
-    if (_conversionRates is EqualUnmodifiableListView) return _conversionRates;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_conversionRates);
-  }
+  final ConversionRates conversionRates;
 
   @override
   String toString() {
@@ -179,18 +172,14 @@ class _$ExchangeModelImpl implements _ExchangeModel {
                 other.timeNextUpdateUtc == timeNextUpdateUtc) &&
             (identical(other.baseCode, baseCode) ||
                 other.baseCode == baseCode) &&
-            const DeepCollectionEquality()
-                .equals(other._conversionRates, _conversionRates));
+            (identical(other.conversionRates, conversionRates) ||
+                other.conversionRates == conversionRates));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      timeLastUpdateUtc,
-      timeNextUpdateUtc,
-      baseCode,
-      const DeepCollectionEquality().hash(_conversionRates));
+  int get hashCode => Object.hash(runtimeType, timeLastUpdateUtc,
+      timeNextUpdateUtc, baseCode, conversionRates);
 
   @JsonKey(ignore: true)
   @override
@@ -208,11 +197,10 @@ class _$ExchangeModelImpl implements _ExchangeModel {
 
 abstract class _ExchangeModel implements ExchangeModel {
   const factory _ExchangeModel(
-          {required final DateTime timeLastUpdateUtc,
-          required final DateTime timeNextUpdateUtc,
-          required final String baseCode,
-          required final List<Map<String, num>> conversionRates}) =
-      _$ExchangeModelImpl;
+      {required final DateTime timeLastUpdateUtc,
+      required final DateTime timeNextUpdateUtc,
+      required final String baseCode,
+      required final ConversionRates conversionRates}) = _$ExchangeModelImpl;
 
   factory _ExchangeModel.fromJson(Map<String, dynamic> json) =
       _$ExchangeModelImpl.fromJson;
@@ -224,7 +212,7 @@ abstract class _ExchangeModel implements ExchangeModel {
   @override
   String get baseCode;
   @override
-  List<Map<String, num>> get conversionRates;
+  ConversionRates get conversionRates;
   @override
   @JsonKey(ignore: true)
   _$$ExchangeModelImplCopyWith<_$ExchangeModelImpl> get copyWith =>

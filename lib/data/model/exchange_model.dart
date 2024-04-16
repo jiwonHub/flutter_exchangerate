@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../dto/exchange_dto.dart';
+
 part 'exchange_model.freezed.dart';
 
 part 'exchange_model.g.dart';
@@ -10,7 +12,7 @@ class ExchangeModel with _$ExchangeModel {
     required DateTime timeLastUpdateUtc,
     required DateTime timeNextUpdateUtc,
     required String baseCode,
-    required List<Map<String, num>> conversionRates,
+    required ConversionRates conversionRates,
   }) = _ExchangeModel;
 
   factory ExchangeModel.fromJson(Map<String, Object?> json) =>

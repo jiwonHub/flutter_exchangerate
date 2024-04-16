@@ -11,9 +11,7 @@ _$ExchangeModelImpl _$$ExchangeModelImplFromJson(Map<String, dynamic> json) =>
       timeLastUpdateUtc: DateTime.parse(json['timeLastUpdateUtc'] as String),
       timeNextUpdateUtc: DateTime.parse(json['timeNextUpdateUtc'] as String),
       baseCode: json['baseCode'] as String,
-      conversionRates: (json['conversionRates'] as List<dynamic>)
-          .map((e) => Map<String, num>.from(e as Map))
-          .toList(),
+      conversionRates: ConversionRates.fromJson(json['conversionRates']),
     );
 
 Map<String, dynamic> _$$ExchangeModelImplToJson(_$ExchangeModelImpl instance) =>

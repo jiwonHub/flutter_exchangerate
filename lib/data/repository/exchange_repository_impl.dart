@@ -1,3 +1,4 @@
+import 'package:flutter_exchangerate/data/mapper/exchange_mapper.dart';
 import 'package:flutter_exchangerate/data/model/exchange_model.dart';
 import 'package:flutter_exchangerate/data/repository/exchange_repository.dart';
 
@@ -11,10 +12,8 @@ class ExchangeRepositoryImpl implements ExchangeRepository {
 }) : _dataSource = exchangeDataSource;
 
   @override
-  Future<List<ExchangeModel>> getExchanges(String country) async {
+  Future<ExchangeModel> getExchanges(String country) async {
     final exchange = await _dataSource.getExchanges(country);
-
-    return exchange.conversionRates!.map((e) => e.to)
+    return exchange.toExchange();
   }
-
 }
