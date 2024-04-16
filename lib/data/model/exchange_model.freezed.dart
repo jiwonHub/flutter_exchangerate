@@ -23,7 +23,6 @@ mixin _$ExchangeModel {
   DateTime get timeLastUpdateUtc => throw _privateConstructorUsedError;
   DateTime get timeNextUpdateUtc => throw _privateConstructorUsedError;
   String get baseCode => throw _privateConstructorUsedError;
-  ConversionRates get conversionRates => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,8 +39,7 @@ abstract class $ExchangeModelCopyWith<$Res> {
   $Res call(
       {DateTime timeLastUpdateUtc,
       DateTime timeNextUpdateUtc,
-      String baseCode,
-      ConversionRates conversionRates});
+      String baseCode});
 }
 
 /// @nodoc
@@ -60,7 +58,6 @@ class _$ExchangeModelCopyWithImpl<$Res, $Val extends ExchangeModel>
     Object? timeLastUpdateUtc = null,
     Object? timeNextUpdateUtc = null,
     Object? baseCode = null,
-    Object? conversionRates = null,
   }) {
     return _then(_value.copyWith(
       timeLastUpdateUtc: null == timeLastUpdateUtc
@@ -75,10 +72,6 @@ class _$ExchangeModelCopyWithImpl<$Res, $Val extends ExchangeModel>
           ? _value.baseCode
           : baseCode // ignore: cast_nullable_to_non_nullable
               as String,
-      conversionRates: null == conversionRates
-          ? _value.conversionRates
-          : conversionRates // ignore: cast_nullable_to_non_nullable
-              as ConversionRates,
     ) as $Val);
   }
 }
@@ -94,8 +87,7 @@ abstract class _$$ExchangeModelImplCopyWith<$Res>
   $Res call(
       {DateTime timeLastUpdateUtc,
       DateTime timeNextUpdateUtc,
-      String baseCode,
-      ConversionRates conversionRates});
+      String baseCode});
 }
 
 /// @nodoc
@@ -112,7 +104,6 @@ class __$$ExchangeModelImplCopyWithImpl<$Res>
     Object? timeLastUpdateUtc = null,
     Object? timeNextUpdateUtc = null,
     Object? baseCode = null,
-    Object? conversionRates = null,
   }) {
     return _then(_$ExchangeModelImpl(
       timeLastUpdateUtc: null == timeLastUpdateUtc
@@ -127,10 +118,6 @@ class __$$ExchangeModelImplCopyWithImpl<$Res>
           ? _value.baseCode
           : baseCode // ignore: cast_nullable_to_non_nullable
               as String,
-      conversionRates: null == conversionRates
-          ? _value.conversionRates
-          : conversionRates // ignore: cast_nullable_to_non_nullable
-              as ConversionRates,
     ));
   }
 }
@@ -141,8 +128,7 @@ class _$ExchangeModelImpl implements _ExchangeModel {
   const _$ExchangeModelImpl(
       {required this.timeLastUpdateUtc,
       required this.timeNextUpdateUtc,
-      required this.baseCode,
-      required this.conversionRates});
+      required this.baseCode});
 
   factory _$ExchangeModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExchangeModelImplFromJson(json);
@@ -153,12 +139,10 @@ class _$ExchangeModelImpl implements _ExchangeModel {
   final DateTime timeNextUpdateUtc;
   @override
   final String baseCode;
-  @override
-  final ConversionRates conversionRates;
 
   @override
   String toString() {
-    return 'ExchangeModel(timeLastUpdateUtc: $timeLastUpdateUtc, timeNextUpdateUtc: $timeNextUpdateUtc, baseCode: $baseCode, conversionRates: $conversionRates)';
+    return 'ExchangeModel(timeLastUpdateUtc: $timeLastUpdateUtc, timeNextUpdateUtc: $timeNextUpdateUtc, baseCode: $baseCode)';
   }
 
   @override
@@ -171,15 +155,13 @@ class _$ExchangeModelImpl implements _ExchangeModel {
             (identical(other.timeNextUpdateUtc, timeNextUpdateUtc) ||
                 other.timeNextUpdateUtc == timeNextUpdateUtc) &&
             (identical(other.baseCode, baseCode) ||
-                other.baseCode == baseCode) &&
-            (identical(other.conversionRates, conversionRates) ||
-                other.conversionRates == conversionRates));
+                other.baseCode == baseCode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, timeLastUpdateUtc,
-      timeNextUpdateUtc, baseCode, conversionRates);
+  int get hashCode =>
+      Object.hash(runtimeType, timeLastUpdateUtc, timeNextUpdateUtc, baseCode);
 
   @JsonKey(ignore: true)
   @override
@@ -199,8 +181,7 @@ abstract class _ExchangeModel implements ExchangeModel {
   const factory _ExchangeModel(
       {required final DateTime timeLastUpdateUtc,
       required final DateTime timeNextUpdateUtc,
-      required final String baseCode,
-      required final ConversionRates conversionRates}) = _$ExchangeModelImpl;
+      required final String baseCode}) = _$ExchangeModelImpl;
 
   factory _ExchangeModel.fromJson(Map<String, dynamic> json) =
       _$ExchangeModelImpl.fromJson;
@@ -211,8 +192,6 @@ abstract class _ExchangeModel implements ExchangeModel {
   DateTime get timeNextUpdateUtc;
   @override
   String get baseCode;
-  @override
-  ConversionRates get conversionRates;
   @override
   @JsonKey(ignore: true)
   _$$ExchangeModelImplCopyWith<_$ExchangeModelImpl> get copyWith =>

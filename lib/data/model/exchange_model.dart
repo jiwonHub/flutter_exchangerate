@@ -12,7 +12,6 @@ class ExchangeModel with _$ExchangeModel {
     required DateTime timeLastUpdateUtc,
     required DateTime timeNextUpdateUtc,
     required String baseCode,
-    required ConversionRates conversionRates,
   }) = _ExchangeModel;
 
   factory ExchangeModel.fromJson(Map<String, Object?> json) =>
